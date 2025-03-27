@@ -63,7 +63,7 @@ export default function LoginForm() {
 
           <div className="flex justify-between items-center text-sm mt-4">
             <Link href="/register" className="text-teal-500 hover:underline">
-              Don't have an account? Register
+              Donot have an account? Register
             </Link>
             
           </div>
