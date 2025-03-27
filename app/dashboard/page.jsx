@@ -58,7 +58,7 @@ export default function Dashboard() {
   return (
     <div className="flex h-screen bg-gray-100">
       {/* Sidebar Component */}
-      <div className="w-64 fixed top-0 left-0 h-full bg-indigo-800 text-white">
+      <div className="w-64 fixed top-0 left-0 h-full bg-slate-300 text-white">
         <Sidebar />
       </div>
 
