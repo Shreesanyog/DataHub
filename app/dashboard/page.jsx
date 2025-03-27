@@ -56,13 +56,14 @@ export default function Dashboard() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="flex h-screen bg-gray-100">
-      {/* Sidebar Component */}
-      <div className="w-64 fixed top-0 left-0 h-full bg-slate-300 text-white">
+    <div className="flex flex-col md:flex-row h-screen bg-gray-100">
+      {/* Sidebar Component (Visible on md screens and above) */}
+      <div className="md:w-64 md:block hidden bg-slate-300 text-white">
         <Sidebar />
       </div>
 
-      <div className="flex-1 ml-64 overflow-y-auto">
+      {/* Main Content Area */}
+      <div className="flex-1 overflow-y-auto">
         {/* Navbar Component */}
         <div className="sticky top-0 z-10 bg-white shadow-md">
           <Navbar />
@@ -71,13 +72,13 @@ export default function Dashboard() {
         <div className="mt-8 px-8 py-6">
           <h2 className="text-3xl font-semibold text-gray-800 mb-6">Dashboard</h2>
 
-          {/* Search, Sort Dropdown, and Pagination Controls */}
-          <div className="flex items-center justify-between mb-6 space-x-6">
+          {/* Search, Sort Dropdown, and Pagination Controls in Same Line */}
+          <div className="flex flex-col sm:flex-row items-center justify-between mb-6 space-y-6 sm:space-y-0 sm:space-x-6">
             {/* Search Box */}
             <input
               type="text"
               placeholder="Search..."
-              className="p-3 w-80 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-300"
+              className="p-3 w-full sm:w-80 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-300"
               onChange={(e) => setSearchTerm(e.target.value)}
             />
 
@@ -121,8 +122,8 @@ export default function Dashboard() {
               )}
             </div>
 
-            {/* Pagination Controls */}
-            <div className="flex items-center space-x-4">
+            {/* Pagination Controls and Total Items */}
+            <div className="flex items-center space-x-4 sm:space-x-6">
               <div className="text-sm text-gray-600">Total: {filteredData.length} items</div>
               <button
                 onClick={() => paginate(currentPage - 1)}
@@ -143,25 +144,27 @@ export default function Dashboard() {
           </div>
 
           {/* Table with Sorting, Pagination, and Searching */}
-          <table className="min-w-full bg-white shadow-lg rounded-lg overflow-hidden">
-            <thead className="bg-indigo-50">
-              <tr>
-                <th className="p-4 text-left font-semibold text-gray-600">Name</th>
-                <th className="p-4 text-left font-semibold text-gray-600">Email</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentRows.map((row) => (
-                <tr
-                  key={row.id}
-                  className="hover:bg-indigo-50 cursor-pointer transition-all duration-300"
-                >
-                  <td className="p-4 border-b text-gray-700">{row.name}</td>
-                  <td className="p-4 border-b text-gray-700">{row.email}</td>
+          <div className="overflow-x-auto">
+            <table className="min-w-full bg-white shadow-lg rounded-lg overflow-hidden">
+              <thead className="bg-indigo-50">
+                <tr>
+                  <th className="p-4 text-left font-semibold text-gray-600">Name</th>
+                  <th className="p-4 text-left font-semibold text-gray-600">Email</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {currentRows.map((row) => (
+                  <tr
+                    key={row.id}
+                    className="hover:bg-indigo-50 cursor-pointer transition-all duration-300"
+                  >
+                    <td className="p-4 border-b text-gray-700">{row.name}</td>
+                    <td className="p-4 border-b text-gray-700">{row.email}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
