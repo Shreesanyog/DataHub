@@ -1,6 +1,6 @@
 # DataHub
 
-**DataHub** is a web application that provides email/password authentication and a responsive dashboard. The dashboard includes a sortable, searchable, and paginated data table, making it easy to manage and interact with large datasets.
+**DataHub** is a web application that provides email/password authentication and a responsive dashboard. The dashboard includes a sortable, searchable and paginated data table, making it easy to manage and interact with large datasets.
 
 ## Features
 - **Email/Password Authentication**: Secure login system to access the platform.
